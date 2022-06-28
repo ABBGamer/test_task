@@ -1,0 +1,17 @@
+<div class="close-dialog">
+  <mat-icon class='cur-p' (click)='close()'>close</mat-icon>
+</div>
+
+<div class="fz-24 bold mb-12">{{ header }}</div>
+
+<mat-dialog-content>
+  <div [innerHTML]="body" *ngIf="body"></div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <button *ngIf="cancelButton" mat-button color="primary"
+          (click)="cancel()">{{ cancelButton }}</button>
+  <button *ngIf="confirmButton" mat-flat-button color="primary"
+          (click)="confirm()">{{ confirmButton }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,55 @@
+<div class="pb-8">
+  <button mat-flat-button color="primary" [matMenuTriggerFor]="menu">Фильтр</button>
+</div>
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent>
+    <app-filter (getFilters)="getFilteredData($event)"></app-filter>
+  </ng-template>
+</mat-menu>
+
+<div *ngIf="!isLoading else loadingData">
+  <div>
+    <div class="df fxdr  color-bg-not-light-gray pl-24 p-tb-12 pr-16 fz-14">
+      <div class="company-column">Компания</div>
+      <div class="status-column">Статус</div>
+      <div class="address-column">Адрес</div>
+      <div class="phone-column">Телефон</div>
+      <div class="action-column">Действие</div>
+      <div class="import-column">Импорт</div>
+    </div>
+  </div>
+
+  <div class="table-body" *ngIf="tableData.length!=0 else noData">
+    <ng-container *ngFor="let inf of tableData">
+      <div class="df fxdr   pl-24 p-tb-12 pr-16 fz-14">
+        <div class="company-column">{{inf.company.name}}</div>
+        <div class="status-column">{{inf.company.company_state.name}}</div>
+        <div class="address-column ">
+          <div class="ellipsis">
+            {{inf.city.name}} {{inf.address}}
+          </div>
+        </div>
+        <div class="phone-column">
+          <div [class]="inf.branch_phones.length-1==i?'':'mb-8'" *ngFor="let phone of inf.branch_phones;let i=index">
+            {{phone}}
+          </div>
+        </div>
+        <div class="action-column">{{inf.task_last}}</div>
+        <div class="import-column">{{inf.is_has_import ? "Открыть" : ""}}</div>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div class="df jcc pt-8">
+    <div>Ничего не найдено</div>
+  </div>
+</ng-template>
+
+<ng-template #loadingData>
+  <div class="df jcc pt-8">
+    <mat-spinner diameter="64"></mat-spinner>
+  </div>
+</ng-template>

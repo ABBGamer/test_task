@@ -1,0 +1,86 @@
+<form [formGroup]="filterCompany" *ngIf="!isLoading else loadingData">
+  <div (click)="$event.stopPropagation()">
+    <div class="df fxdr">
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>ID компании</mat-label>
+        <input matInput formControlName="ID">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Телефон</mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Регион</mat-label>
+        <mat-select formControlName="region">
+          <mat-option *ngFor="let region of regions" [value]="region.id">
+            {{region.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="df fxdr">
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Наименование компании</mat-label>
+        <input matInput formControlName="company_name">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Область, край</mat-label>
+        <mat-select formControlName="district">
+          <mat-option *ngFor="let district of districts" [value]="district.id">
+            {{district.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="df fxdr">
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Юр наименование</mat-label>
+        <input matInput formControlName="ur_name">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Сайт</mat-label>
+        <input matInput formControlName="site">
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Адрес</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+    </div>
+    <div class="df fxdr">
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Статус компании</mat-label>
+        <mat-select formControlName="company_state">
+          <mat-option *ngFor="let state of companyStates" [value]="state.id">
+            {{state.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Представитель</mat-label>
+        <input matInput formControlName="represent">
+      </mat-form-field>
+      <button class="w100p ml-16" mat-button (click)="setFilters()">Очистить</button>
+    </div>
+    <div class="df fxdr jcsb">
+      <mat-form-field class="ml-20 no-error" appearance="outline">
+        <mat-label>Тип компании</mat-label>
+        <mat-select formControlName="company_type">
+          <mat-option *ngFor="let type of companyTypes" [value]="type.id">
+            {{type.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="w100p ml-16" mat-flat-button color="primary" (click)="combineFilters()">Показать</button>
+    </div>
+  </div>
+</form>
+
+<ng-template #loadingData>
+  <div class="df jcc pt-8">
+    <mat-spinner diameter="64"></mat-spinner>
+  </div>
+</ng-template>

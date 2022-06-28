@@ -1,0 +1,14 @@
+<app-header (toggleMenu)="sidenav.opened?sidenav.close():sidenav.open()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" class="menu" #sidenav>
+    <app-menu></app-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content">
+      <app-view-table></app-view-table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

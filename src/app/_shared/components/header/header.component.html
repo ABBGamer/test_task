@@ -1,0 +1,12 @@
+<mat-toolbar class="header df fxdr jcsb aic" color="primary">
+  <div>
+    <button mat-icon-button (click)="toggleMenu.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="mr-8">Тестовое задание</span>
+  </div>
+  <div class="df aic">
+    <div class="mr-8">{{userName}}</div>
+    <button mat-flat-button (click)="logOut()">Выйти</button>
+  </div>
+</mat-toolbar>

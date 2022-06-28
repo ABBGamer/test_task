@@ -1,0 +1,35 @@
+.table-body {
+  overflow: auto;
+  height: calc(100% - 100px);
+}
+
+.company-column {
+  width: 250px;
+}
+
+.status-column {
+  width: 200px;
+}
+
+.address-column {
+  width: 380px;
+}
+
+.phone-column {
+  width: 150px;
+}
+
+.action-column {
+  width: 200px;
+}
+
+.import-column {
+  width: 100px;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 380px;
+  white-space: nowrap;
+}

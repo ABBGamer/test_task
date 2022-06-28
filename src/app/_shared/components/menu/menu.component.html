@@ -1,0 +1,7 @@
+<div *ngFor="let cat of menuItems; let i=index">
+  <div class="color-white fz-20 mb-12">{{cat.name}}</div>
+  <div *ngFor="let field of cat.fields">
+    <div class="fz-16 mb-8 pl-12">{{field}}</div>
+  </div>
+  <mat-divider *ngIf="i!=menuItems.length-1"></mat-divider>
+</div>
